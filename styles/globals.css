@@ -1,42 +1,92 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
+
+@import url("../node_modules/bootstrap-icons/font/bootstrap-icons.min.css");
+
+
+.sidebar {
+  min-height: 100vh;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  background-color: #f8f9fa;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.sidebar-sticky {
+  position: sticky;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 1rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.nav-link {
+  color: #333;
+  padding: .75rem 1rem;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.nav-link:hover {
+  color: #0d6efd;
+  background-color: #e9ecef;
+  border-radius: 0.25rem;
+}
+
+.nav-link.active {
+  color: #0d6efd;
+  background-color: #e9ecef;
+  border-radius: 0.25rem;
+}
+
+.nav-link i {
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.sidebar-heading {
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #6c757d;
+}
+
+.sidebar-divider {
+  margin: 0.5rem 1rem;
+  border-top: 1px solid #dee2e6;
+}
+
+/* Sidebar toggle for mobile */
+@media (max-width: 768px) {
+  .sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+  }
+
+  .sidebar.show {
+      transform: translateX(0);
+  }
+
+  .sidebar-toggle {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 101;
   }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+/* Main content wrapper */
+.content-wrapper {
+  margin-left: 250px;
+  padding: 1rem;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@media (max-width: 768px) {
+  .content-wrapper {
+      margin-left: 0;
   }
 }
